@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authentication</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div><%= alert %></div>
+    <div><%= notice %></div>
+
+    <% if user_signed_in? %>
+      <%= button_to 'Logout', session_path, method: :delete %>
+      <%= link_to 'Edit password', edit_password_path %>
+    <% else %>
+      <%= link_to 'Sign up', new_registration_path %>
+      <%= link_to 'Log in', new_session_path %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
